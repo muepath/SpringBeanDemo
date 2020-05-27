@@ -5,4 +5,5 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="accountDao" class="Dao.AccountDao"></bean>
     <bean id="itemDao" class="Dao.ItemDao"></bean>
+
 </beans>

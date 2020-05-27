@@ -6,8 +6,61 @@
     <import resource="classpath:/Dao/Daos.xml"></import>
 
     <bean id="petStore" class="Service.PetStoreServiceImp">
-        <property name="accountDao" ref="accountDao"/>
-        <property name="itemDao" ref="itemDao"/>
+        <!--    基于构造函数的依赖注入-->
+        <constructor-arg ref="accountDao"/>
+        <constructor-arg ref="itemDao"/>
+    </bean>
+
+<!--    <bean id="petStore1" class="Service.PetStoreServiceImp">-->
+
+<!--        <property name="accountDao" ref="accountDao"/>-->
+<!--        <property name="itemDao" ref="itemDao"/>-->
+<!--    </bean>-->
+<!--    用静态工厂方法实例化-->
+<!--    很多时候我们需要使用到第三方jar包提供给我们的类,-->
+<!--    而这个类没有构造方法，而是通过第三方包提供的静态工厂创建的，这是时候，如果我们想把第三方jar里面的这个类交由spring来管理的话，-->
+<!--    就可以使用Spring提供的静态工厂创建实例的配置。-->
+    <bean id="clientService"
+          class="Service.ClientService"
+          factory-method="createInstance"/>
+<!--    实例工厂创建-->
+<!--    通过实例工厂创建，其本质就是把创建实例的工厂类交由Spring管理，同时把调用工厂类的方法创建实例的这个过程也交由Spring管理，-->
+<!--    看创建实例的这个过程也是有我们自己配置的实例工厂内部实现的。在实际开发的过程中，如Spring整合Hibernate就是通过这种方式实现的。-->
+<!--    但对于没有与Spring整合过的工厂类，我们一般都是自己用代码来管理的。-->
+    <bean id="serviceLocator" class="Service.DefaultServiceLocator">
+        <!-- inject any dependencies required by this locator bean -->
+    </bean>
+
+    <bean id="clientService1"
+          factory-bean="serviceLocator"
+          factory-method="createClientServiceInstance"/>
+
+
+<!--    基于构造函数的依赖注入-->
+
+<!--    构造函数参数类型匹配-->
+    <bean id="exampleBean" class="Service.ExampleBean">
+        <constructor-arg type="int" value="7500000"/>
+        <constructor-arg type="java.lang.String" value="42"/>
+    </bean>
+<!--    构造函数参数索引-->
+    <bean id="exampleBean1" class="Service.ExampleBean">
+        <constructor-arg index="0" value="7500001"/>
+        <constructor-arg index="1" value="42"/>
+    </bean>
+    <bean id="exampleBean2" class="Service.ExampleBean">
+        <constructor-arg name="years" value="7500002"/>
+        <constructor-arg name="ultimateAnswer" value="42"/>
+    </bean>
+
+
+    <!-- in the parent context -->
+    <bean id="accountService1" class="Service.AccountService">
+    </bean>
+
+    <bean id="accountService" class="org.springframework.aop.framework.ProxyFactoryBean" parent="accountService1">
+
     </bean>
 
 </beans>
+
