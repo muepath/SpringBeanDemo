@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="cat" class="AutoWired.Cat"></bean>
+    <bean id="dog" class="AutoWired.Dog"></bean>
+<!--    与其他三种方式不能兼容-->
+<!--    <bean id="test" class="AutoWired.Person" autowire="constructor">-->
+<!--        <constructor-arg index="2" value="55"></constructor-arg>-->
+<!--    </bean>-->
+
+</beans>
