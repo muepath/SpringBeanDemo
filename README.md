@@ -1,5 +1,6 @@
 # SpringBeanDemo
 学习springBean
+<<<<<<< HEAD
 
 Spring Bean 三种构建方式的区别和作用。
 
@@ -18,3 +19,5 @@ springBean的循环依赖：
 depends-on 和ref 依赖的区别
 
 自动装配
+=======
+>>>>>>> origin/master
