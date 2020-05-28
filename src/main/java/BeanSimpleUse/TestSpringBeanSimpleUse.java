@@ -1,3 +1,5 @@
+package BeanSimpleUse;
+
 import BeanSimpleUse.Service.AccountService;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.support.GenericApplicationContext;

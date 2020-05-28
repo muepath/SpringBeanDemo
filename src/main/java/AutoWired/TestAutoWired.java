@@ -1,3 +1,5 @@
+package AutoWired;
+
 import AutoWired.Person;
 import org.springframework.beans.factory.xml.XmlBeanDefinitionReader;
 import org.springframework.context.support.GenericApplicationContext;

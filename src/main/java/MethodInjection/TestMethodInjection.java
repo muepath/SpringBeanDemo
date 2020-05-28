@@ -1,3 +1,5 @@
+package MethodInjection;
+
 import MethodInjection.CommandManager;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -12,6 +14,5 @@ public class TestMethodInjection {
         Map<String,Integer> map =  new HashMap<>();
         map.put("clear",1);
         System.out.println(manager.process(map));
-
     }
 }
